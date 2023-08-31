@@ -1,10 +1,10 @@
 services:
   nodeA:
     build:
-      context: .
+      context: ./cs6480lab1
   r1:
     build:
-      context: .
+      context: ./cs6480lab1
   nodeB:
     build:
-      context: .
+      context: ./cs6480lab1
