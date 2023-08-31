@@ -1,5 +1,5 @@
 services:
-  nodeA:
+  a:
     #image: ubuntu
     tty: true
     build: .
@@ -7,7 +7,7 @@ services:
     #image: ubuntu
     tty: true
     build: .
-  nodeB:
+  b:
     #image: ubuntu
     tty: true
     build: .
