@@ -1,13 +1,13 @@
 services:
   nodeA:
-    image: ubuntu
+    #image: ubuntu
     tty: true
     build: .
   r1:
-    image: ubuntu
+    #image: ubuntu
     tty: true
     build: .
   nodeB:
-    image: ubuntu
+    #image: ubuntu
     tty: true
     build: .
