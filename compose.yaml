@@ -1,7 +1,10 @@
 services:
   nodeA:
-    build: .
+    build:
+      context: .
   r1:
-    build: .
+    build:
+      context: .
   nodeB:
-    build: .
+    build:
+      context: .
