@@ -1,0 +1,7 @@
+service:
+  nodeA:
+    image: ubuntu
+  r1:
+    image: ubuntu
+  nodeB:
+    image: ubuntu
