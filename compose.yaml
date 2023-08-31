@@ -1,7 +1,7 @@
 services:
   nodeA:
-    build: /users/axetang/cs6480lab1
+    build: .
   r1:
-    build: /users/axetang/cs6480lab1
+    build: .
   nodeB:
-    build: /users/axetang/cs6480lab1
+    build: .
