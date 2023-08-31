@@ -1,7 +1,7 @@
 services:
   nodeA:
-    build: ~/
+    build: .
   r1:
-    build: ~/
+    build: .
   nodeB:
-    build: ~/
+    build: .
