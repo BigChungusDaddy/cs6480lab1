@@ -1,7 +1,7 @@
 services:
   nodeA:
-    image: ubuntu
+    build: .
   r1:
-    image: ubuntu
+    build: .
   nodeB:
-    image: ubuntu
+    build: .
