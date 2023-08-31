@@ -1,4 +1,4 @@
-service:
+services:
   nodeA:
     image: ubuntu
   r1:
