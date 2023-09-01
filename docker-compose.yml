@@ -11,8 +11,6 @@ services:
     tty: true
     build: .
     networks:
-      - l1
-      - l2
       l1:
         ipv4_address: 172.28.2.1
       l2:
@@ -22,7 +20,6 @@ services:
     tty: true
     build: .
     networks:
-      - l2
       l2:
         ipv4_address: 172.23.2.2
 
