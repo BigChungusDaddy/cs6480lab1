@@ -6,8 +6,9 @@ services:
     networks:
       l1:
         ipv4_address: 172.28.2.3
-    extra_hosts:
-      r1: 172.28.2.1
+    privileged: true
+    # extra_hosts:
+    #   r1: 172.28.2.1
   r1:
     #image: ubuntu
     tty: true
@@ -17,9 +18,10 @@ services:
         ipv4_address: 172.28.2.1
       l2:
         ipv4_address: 172.23.2.1
-    extra_hosts:
-      a: 172.28.2.3
-      b: 172.23.2.1
+    privileged: true
+    # extra_hosts:
+    #   a: 172.28.2.3
+    #   b: 172.23.2.1
   b:
     #image: ubuntu
     tty: true
@@ -27,8 +29,9 @@ services:
     networks:
       l2:
         ipv4_address: 172.23.2.3
-    extra_hosts:
-      r1: 172.23.2.1
+    privileged: true
+    # extra_hosts:
+    #   r1: 172.23.2.1
 
 networks:
   l1:
