@@ -4,15 +4,24 @@ geni-get user_urn
 geni-get status
 sudo docker ps
 sudo docker network ls
-sudo docker network inspect cs6480lab1_l1
-sudo docker network inspect cs6480lab1_l2
+sudo docker network inspect cs6480lab1_l12
+sudo docker network inspect cs6480lab1_l23
+sudo docker network inspect cs6480lab1_l34
+sudo docker network inspect cs6480lab1_l14
+sudo docker network inspect cs6480lab1_la1
+sudo docker network inspect cs6480lab1_lb3
 
-sudo docker exec -it cs6480lab1-a-1 bash
-sudo docker exec -it cs6480lab1-b-1 bash
-sudo docker exec -it cs6480lab1-r1-1 bash
-
+sudo docker exec -it cs6480lab1-r4-1 bash
+telnet localhost 2601
+zebra
+show ip route ospf
+exit
 tcpdump -i eth1
+
 # On a
+sudo docker exec -it cs6480lab1-a-1 bash
 ping 172.23.2.3
+
 # On b
+sudo docker exec -it cs6480lab1-b-1 bash
 ping 172.28.2.3
