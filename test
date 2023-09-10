@@ -1,0 +1,18 @@
+hostname
+cat /var/emulab/boot/creator
+geni-get user_urn
+geni-get status
+sudo docker ps
+sudo docker network ls
+sudo docker network inspect cs6480lab1_l1
+sudo docker network inspect cs6480lab1_l2
+
+sudo docker exec -it cs6480lab1-a-1 bash
+sudo docker exec -it cs6480lab1-b-1 bash
+sudo docker exec -it cs6480lab1-r1-1 bash
+
+tcpdump -i eth1
+# On a
+ping 172.23.2.3
+# On b
+ping 172.28.2.3

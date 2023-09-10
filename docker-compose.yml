@@ -4,46 +4,102 @@ services:
     tty: true
     build: .
     networks:
-      l1:
+      la1:
         ipv4_address: 172.28.2.3
     privileged: true
     # extra_hosts:
     #   r1: 172.28.2.1
-  r1:
-    #image: ubuntu
-    tty: true
-    build: .
-    networks:
-      l1:
-        ipv4_address: 172.28.2.1
-      l2:
-        ipv4_address: 172.23.2.1
-    privileged: true
-    # extra_hosts:
-    #   a: 172.28.2.3
-    #   b: 172.23.2.1
   b:
     #image: ubuntu
     tty: true
     build: .
     networks:
-      l2:
+      lb3:
         ipv4_address: 172.23.2.3
     privileged: true
     # extra_hosts:
     #   r1: 172.23.2.1
+  r1:
+    #image: ubuntu
+    tty: true
+    build: .
+    networks:
+      la1:
+        ipv4_address: 172.28.2.1
+      l12:
+        ipv4_address: 172.24.2.1
+      l14:
+        ipv4_address: 172.27.2.1
+    privileged: true
+    # extra_hosts:
+    #   a: 172.28.2.3
+    #   b: 172.23.2.1
+  r2:
+    tty: true
+    build: .
+    networks:
+      l12:
+        ipv4_address: 172.24.2.2
+      l23:
+        ipv4_address: 172.25.2.1
+    privileged: true
+  r3:
+    tty: true
+    build: .
+    networks:
+      l23:
+        ipv4_address: 172.25.2.2
+      l34:
+        ipv4_address: 172.26.2.1
+      lb3:
+        ipv4_address: 172.23.2.1
+    privileged: true
+  r4:
+    tty: true
+    build: .
+    networks:
+      l14:
+        ipv4_address: 172.27.2.2
+      l34:
+        ipv4_address: 172.23.2.2
+    privileged: true
+
 
 networks:
-  l1:
+  la1:
     ipam:
       config:
         - subnet: 172.28.0.0/16
           ip_range: 172.28.2.0/24
           # gateway: 172.28.2.1
   
-  l2:
+  lb3:
     ipam:
       config:
         - subnet: 172.23.0.0/16
           ip_range: 172.23.2.0/24
           # gateway: 172.23.2.1
+  
+  l12:
+    ipam:
+      config:
+        - subnet: 172.24.0.0/16
+          ip_range: 172.24.2.0/24
+
+  l23:
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+          ip_range: 172.25.2.0/24
+
+  l34:
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16
+          ip_range: 172.26.2.0/24
+  
+  l14:
+    ipam:
+      config:
+        - subnet: 172.27.0.0/16
+          ip_range: 172.27.2.0/24
