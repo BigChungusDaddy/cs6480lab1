@@ -1,6 +1,8 @@
 #!/bin/bash
-r4_cost=1100
-r2_cost=1090
+r4_state="./r4_state.dat"
+r2_state="./r2_state.dat"
+r4_cost=$(cat "$r4_state")
+r2_cost=$(cat "$r2_state")
 
 # Assume containers has been created
 construct_topology() {
@@ -18,12 +20,12 @@ move_traffic() {
     new_cost=$(($r4_cost - 20))
     sudo docker exec cs6480lab1-r4-1 sed -i -e "s/$(($r4_cost))/$(($new_cost))/g" /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r4-1 service ospfd restart
-    r4_cost=$(($new_cost))
+    echo $(($new_cost)) > $r4_state
     else
     new_cost=$(($r2_cost - 20))
     sudo docker exec cs6480lab1-r2-1 sed -i -e "s/$(($r2_cost))/$(($new_cost))/g" /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r2-1 service ospfd restart
-    r2_cost=$(($new_cost))
+    echo $(($new_cost)) > $r2_state
     fi
 }
 
