@@ -12,7 +12,7 @@ construct_topology() {
 }
 
 move_traffic() {
-    if $(($r4_cost>$r2_cost))
+    if (($r4_cost>$r2_cost))
     then
     # Move traffic from r1 - r2 - r3 to r4
     new_cost=$(($r4_cost - 20))
