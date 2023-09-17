@@ -12,18 +12,18 @@ construct_topology() {
 }
 
 move_traffic() {
-    if $r4_cost>$r2_cost
+    if $(($r4_cost>$r2_cost))
     then
     # Move traffic from r1 - r2 - r3 to r4
-    new_cost=$r4_cost - 20
-    sudo docker exec cs6480lab1-r4-1 sed -i -e "s/$r4_cost/$new_cost/g" /etc/quagga/ospfd.conf
+    new_cost=$(($r4_cost - 20))
+    sudo docker exec cs6480lab1-r4-1 sed -i -e "s/$(($r4_cost))/$(($new_cost))/g" /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r4-1 service ospfd restart
-    r4_cost=$new_cost
+    r4_cost=$(($new_cost))
     else
-    new_cost=$r2_cost - 20
-    sudo docker exec cs6480lab1-r2-1 sed -i -e "s/$r2_cost/$new_cost/g" /etc/quagga/ospfd.conf
+    new_cost=$(($r2_cost - 20))
+    sudo docker exec cs6480lab1-r2-1 sed -i -e "s/$(($r2_cost))/$(($new_cost))/g" /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r2-1 service ospfd restart
-    r2_cost=$new_cost
+    r2_cost=$(($new_cost))
     fi
 }
 
@@ -118,8 +118,7 @@ while getopts 'hcmsifr:' OPTION; do
       -f,
             bring up r4.
       -r,
-            remove r2.
-      "
+            remove r2.\n"
       ;;
     c)
       construct_topology
