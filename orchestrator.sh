@@ -147,7 +147,7 @@ while getopts 'hcmsifrd:' OPTION; do
       sudo docker system prune --all
       ;;
     ?)
-      echo "script usage: $(basename \$0) [-h] [-c] [-m] [-s] [-i] [-f] [-r]" >&2
+      echo "script usage: $(basename \$0) [-h] [-c] [-m] [-s] [-i] [-f] [-r] [-d]" >&2
       exit 1
       ;;
     esac
