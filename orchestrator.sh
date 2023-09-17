@@ -1,7 +1,4 @@
 #!/bin/bash
-r4_cost=1100
-r2_cost=1090
-
 while getopts 'hcmsifr:' OPTION; do
     case "$OPTION" in
     h)
@@ -43,6 +40,8 @@ while getopts 'hcmsifr:' OPTION; do
       ;;
     esac
 done
+r4_cost=1100
+r2_cost=1090
 
 # Assume containers has been created
 construct_topology() {
