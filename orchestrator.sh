@@ -107,7 +107,7 @@ install_routes() {
     sudo docker exec cs6480lab1-b-1 route add -net 172.28.0.0/16 gw 172.23.2.1
 }
 
-while getopts 'hcmsifrd:' OPTION; do
+while getopts 'hcmsifrx:' OPTION; do
     case "$OPTION" in
     h)
       printf "
@@ -142,12 +142,12 @@ while getopts 'hcmsifrd:' OPTION; do
     r)
       sudo docker compose stop b
       ;;
-    d)
+    x)
       sudo docker compose stop
       sudo docker system prune --all
       ;;
     ?)
-      echo "script usage: $(basename \$0) [-h] [-c] [-m] [-s] [-i] [-f] [-r] [-d]" >&2
+      echo "script usage: $(basename \$0) [-h] [-c] [-m] [-s] [-i] [-f] [-r] [-x]" >&2
       exit 1
       ;;
     esac
