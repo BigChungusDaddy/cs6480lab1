@@ -2,8 +2,49 @@
 r4_cost=1100
 r2_cost=1090
 
-# Assume containers has been created
+while getopts 'hcmsifr:' OPTION; do
+    case "$OPTION" in
+    h)
+      printf "
+      -c construct,
+            create default topology.
+      -m move,
+            move traffic from north to south or from south to north.
+      -s start,
+            start ospf routing suite.
+      -i install,
+            install routes on a and b.
+      -f,
+            bring up r4.
+      -r,
+            remove r2."
+      ;;
+    c)
+      construct_topology
+      ;;
+    m)
+      move_traffic
+      ;;
+    s)
+      start_ospf
+      ;;
+    i)
+      install_routes
+      ;;
+    f)
+      bring_up_r4
+      ;;
+    r)
+      sudo docker compose stop b
+      ;;
+    ?)
+      echo "script usage: $(basename \$0) [-h] [-c] [-m] [-s] [-i] [-f] [-r]" >&2
+      exit 1
+      ;;
+    esac
+done
 
+# Assume containers has been created
 construct_topology() {
     sudo docker compose start a
     sudo docker compose start r1
@@ -54,9 +95,9 @@ router ospf
   network 172.24.0.0/16 area 0.0.0.0
   network 172.25.0.0/16 area 0.0.0.0
 interface eth0
-  ip ospf cost 100
+  ip ospf cost 1090
 interface eth1
-  ip ospf cost 100' >> /etc/quagga/ospfd.conf"
+  ip ospf cost 1090' >> /etc/quagga/ospfd.conf"
     sudo docker exec cs6480lab1-r2-1 bash -c "printf 'hostname Router
 password zebra
 enable password zebra' >> /etc/quagga/zebra.conf"
@@ -89,9 +130,9 @@ router ospf
   network 172.26.0.0/16 area 0.0.0.0
   network 172.27.0.0/16 area 0.0.0.0
 interface eth0
-  ip ospf cost 110
+  ip ospf cost 1100
 interface eth1
-  ip ospf cost 110' >> /etc/quagga/ospfd.conf"
+  ip ospf cost 1100' >> /etc/quagga/ospfd.conf"
     sudo docker exec cs6480lab1-r4-1 bash -c "printf 'hostname Router
 password zebra
 enable password zebra' >> /etc/quagga/zebra.conf"
