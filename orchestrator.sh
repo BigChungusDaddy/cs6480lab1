@@ -6,7 +6,6 @@ r2_cost=$(cat "$r2_state")
 
 # Assume containers has been created
 construct_topology() {
-    sudo docker compose build
     sudo docker compose start a
     sudo docker compose start r1
     sudo docker compose start r2
