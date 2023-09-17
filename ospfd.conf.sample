@@ -1,14 +1,42 @@
-! -*- ospf -*-
-!
-! OSPFd sample configuration file
-!
-!
+! Zebra for all
+hostname Router
+password zebra
+enable password zebra
+
+! OSPF for r1
 hostname ospfd
 password zebra
-!enable password please-set-at-here
-!
 router ospf
-  network 172.26.0.0/24 area 0.0.0.0
-  network 172.27.0.0/24 area 0.0.0.0
-!
-log stdout
+  network 172.28.0.0/16 area 0.0.0.0
+  network 172.27.0.0/16 area 0.0.0.0
+  network 172.24.0.0/16 area 0.0.0.0
+
+! OSPF for r2
+hostname ospfd
+password zebra
+router ospf
+  network 172.24.0.0/16 area 0.0.0.0
+  network 172.25.0.0/16 area 0.0.0.0
+interface eth0
+  ip ospf cost 100
+interface eth1
+  ip ospf cost 100
+
+! OSPF for r3
+hostname ospfd
+password zebra
+router ospf
+  network 172.23.0.0/16 area 0.0.0.0
+  network 172.25.0.0/16 area 0.0.0.0
+  network 172.26.0.0/16 area 0.0.0.0
+
+! OSPF for r4
+hostname ospfd
+password zebra
+router ospf
+  network 172.26.0.0/16 area 0.0.0.0
+  network 172.27.0.0/16 area 0.0.0.0
+interface eth0
+  ip ospf cost 110
+interface eth1
+  ip ospf cost 110

@@ -16,6 +16,10 @@ telnet localhost 2601
 zebra
 show ip route ospf
 exit
+telnet localhost ospfd
+en
+show running-config
+exit
 tcpdump -i eth1
 
 # On a
