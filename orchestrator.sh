@@ -35,6 +35,8 @@ start_ospf(){
     # For r1
     sudo docker exec cs6480lab1-r1-1 touch /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r1-1 touch /etc/quagga/zebra.conf
+    sudo docker exec cs6480lab1-r1-1 bash -c "> /etc/quagga/ospfd.conf"
+    sudo docker exec cs6480lab1-r1-1 bash -c "> /etc/quagga/zebra.conf"
     sudo docker exec cs6480lab1-r1-1 bash -c "printf 'hostname ospfd
 password zebra
 router ospf
@@ -50,6 +52,8 @@ enable password zebra' >> /etc/quagga/zebra.conf"
     # For r2
     sudo docker exec cs6480lab1-r2-1 touch /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r2-1 touch /etc/quagga/zebra.conf
+    sudo docker exec cs6480lab1-r2-1 bash -c "> /etc/quagga/ospfd.conf"
+    sudo docker exec cs6480lab1-r2-1 bash -c "> /etc/quagga/zebra.conf"
     sudo docker exec cs6480lab1-r2-1 bash -c "printf 'hostname ospfd
 password zebra
 router ospf
@@ -68,6 +72,8 @@ enable password zebra' >> /etc/quagga/zebra.conf"
     # For r3
     sudo docker exec cs6480lab1-r3-1 touch /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r3-1 touch /etc/quagga/zebra.conf
+    sudo docker exec cs6480lab1-r3-1 bash -c "> /etc/quagga/ospfd.conf"
+    sudo docker exec cs6480lab1-r3-1 bash -c "> /etc/quagga/zebra.conf"
     sudo docker exec cs6480lab1-r3-1 bash -c "printf 'hostname ospfd
 password zebra
 router ospf
@@ -82,9 +88,11 @@ enable password zebra' >> /etc/quagga/zebra.conf"
 }
 
 bring_up_r4() {
-     sudo docker compose start r4
+    sudo docker compose start r4
     sudo docker exec cs6480lab1-r4-1 touch /etc/quagga/ospfd.conf
     sudo docker exec cs6480lab1-r4-1 touch /etc/quagga/zebra.conf
+    sudo docker exec cs6480lab1-r4-1 bash -c "> /etc/quagga/ospfd.conf"
+    sudo docker exec cs6480lab1-r4-1 bash -c "> /etc/quagga/zebra.conf"
     sudo docker exec cs6480lab1-r4-1 bash -c "printf 'hostname ospfd
 password zebra
 router ospf
