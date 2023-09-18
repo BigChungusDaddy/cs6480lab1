@@ -139,7 +139,7 @@ while getopts 'hcmsifrdx:' OPTION; do
       bring_up_r4
       ;;
     r)
-      sudo docker compose stop b
+      sudo docker compose stop r2
       ;;
     d)
       sudo docker compose stop
